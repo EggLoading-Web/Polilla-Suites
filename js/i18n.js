@@ -263,6 +263,8 @@ window.POLILLA_I18N = {
     '.exit-modal__wa': 'O escribinos directo por WhatsApp',
     '.booking-modal__title': {h: 'Estas son las habitaciones<br>libres para tus fechas'},
     '.booking-modal__note': 'Esta es una simulación. Para reservar de verdad, el concierge te contacta en menos de 12 h.',
+        '.mobile-controls__row:nth-child(1) .mobile-controls__label': 'Tema',
+    '.mobile-controls__row:nth-child(2) .mobile-controls__label': 'Idioma',
     '#bmReserve': 'Continuar con el concierge'
   },
 
@@ -525,6 +527,8 @@ window.POLILLA_I18N = {
     '.exit-modal__wa': 'Or write to us on WhatsApp',
     '.booking-modal__title': {h: 'These are the rooms<br>available for your dates'},
     '.booking-modal__note': 'This is a simulation. To book for real, the concierge will contact you within 12 hours.',
+        '.mobile-controls__row:nth-child(1) .mobile-controls__label': 'Theme',
+    '.mobile-controls__row:nth-child(2) .mobile-controls__label': 'Language',
     '#bmReserve': 'Continue with the concierge'
   },
 
@@ -787,6 +791,8 @@ window.POLILLA_I18N = {
     '.exit-modal__wa': 'Oppure scrivici su WhatsApp',
     '.booking-modal__title': {h: 'Queste sono le camere<br>libere per le tue date'},
     '.booking-modal__note': 'Questa è una simulazione. Per prenotare davvero, il concierge ti contatta entro 12 ore.',
+        '.mobile-controls__row:nth-child(1) .mobile-controls__label': 'Tema',
+    '.mobile-controls__row:nth-child(2) .mobile-controls__label': 'Lingua',
     '#bmReserve': 'Continua con il concierge'
   }
 };

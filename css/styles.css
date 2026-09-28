@@ -2056,3 +2056,94 @@ html[data-theme="light"] .exit-modal__overlay{ background:rgba(26,29,34,.55); }
 @media (hover: none), (pointer: coarse){
   .cursor{ display:none; }
 }
+/* ============================================================
+   HEADER EN MÓVIL · limpio
+   ============================================================ */
+@media (max-width:1080px){
+  .header__actions .theme-toggle,
+  .header__actions .lang-switcher{
+    display:none;
+  }
+  .header__actions{ gap:.5rem; }
+  .header__inner{ gap:1rem; }
+}
+
+/* En escritorio, ocultar los controles del menú móvil */
+@media (min-width:1081px){
+  .mobile-controls{ display:none; }
+}
+
+/* ============================================================
+   CONTROLES DENTRO DEL MENÚ MÓVIL
+   ============================================================ */
+.mobile-controls{
+  margin-top:2.5rem;
+  padding-top:2rem;
+  border-top:1px solid rgba(184,155,94,.15);
+  display:flex;
+  flex-direction:column;
+  gap:1.4rem;
+}
+
+.mobile-controls__row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.5rem;
+}
+
+.mobile-controls__label{
+  font-family:var(--cuerpo);
+  font-size:.66rem;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--dorado);
+  opacity:.9;
+  font-weight:400;
+}
+
+/* Botón tema dentro del menú */
+.theme-toggle--mobile{
+  width:44px;
+  height:44px;
+  position:relative;
+}
+.theme-toggle--mobile svg{
+  width:18px;
+  height:18px;
+}
+
+/* Selector de idioma dentro del menú */
+.lang-switcher--mobile{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  padding:.4rem .5rem;
+  border:1px solid rgba(242,239,232,.14);
+  border-radius:999px;
+  background:rgba(242,239,232,.03);
+}
+.lang-switcher--mobile .lang-btn{
+  width:36px;
+  height:24px;
+}
+
+/* En el menú móvil, quitar el border-bottom del último enlace
+   (los controles van después) */
+.mobile-nav > a:last-of-type{
+  border-bottom:0;
+}
+
+/* El footer del menú móvil va al final */
+.mobile-nav__foot{
+  margin-top:2rem;
+}
+
+/* Menú móvil con scroll si la pantalla es baja */
+@media (max-height:750px){
+  .mobile-nav{
+    justify-content:flex-start;
+    overflow-y:auto;
+    padding-top:7rem;
+  }
+}
