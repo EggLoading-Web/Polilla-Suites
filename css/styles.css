@@ -2147,3 +2147,66 @@ html[data-theme="light"] .exit-modal__overlay{ background:rgba(26,29,34,.55); }
     padding-top:7rem;
   }
 }
+/* ============================================================
+   CRÉDITO · EGG LOADING
+   ============================================================ */
+.footer__credit{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:1rem;
+  flex-wrap:wrap;
+  padding-block:2rem 2.5rem;
+  border-top:1px solid rgba(184,155,94,.12);
+  text-decoration:none;
+  transition:background .4s var(--ease);
+  position:relative;
+  overflow:hidden;
+}
+.footer__credit::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(60% 100% at 50% 50%, rgba(184,155,94,.06), transparent 70%);
+  opacity:0;
+  transition:opacity .5s var(--ease);
+  pointer-events:none;
+}
+.footer__credit:hover::before{ opacity:1; }
+.footer__credit-label{
+  font-size:.6rem;
+  letter-spacing:.36em;
+  text-transform:uppercase;
+  color:#6E6C67;
+  transition:color .4s var(--ease);
+}
+.footer__credit:hover .footer__credit-label{ color:var(--luna-suave); }
+.footer__credit-brand{
+  font-family:var(--display);
+  font-size:clamp(1.4rem, 2.4vw, 1.85rem);
+  font-weight:400;
+  letter-spacing:.28em;
+  text-indent:.28em;
+  color:var(--dorado);
+  transition:color .4s var(--ease), letter-spacing .5s var(--ease);
+}
+.footer__credit:hover .footer__credit-brand{
+  color:var(--dorado-suave);
+  letter-spacing:.34em;
+}
+.footer__credit-arrow{
+  width:22px;
+  height:11px;
+  color:var(--dorado);
+  transition:transform .5s var(--ease), color .4s var(--ease);
+}
+.footer__credit:hover .footer__credit-arrow{
+  transform:translateX(6px);
+  color:var(--dorado-suave);
+}
+@media (max-width:600px){
+  .footer__credit{ padding-block:1.6rem 2rem; gap:.7rem; }
+  .footer__credit-label{ font-size:.54rem; letter-spacing:.3em; }
+  .footer__credit-brand{ font-size:1.25rem; letter-spacing:.22em; text-indent:.22em; }
+  .footer__credit-arrow{ width:18px; height:9px; }
+}

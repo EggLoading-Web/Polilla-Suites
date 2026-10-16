@@ -49,7 +49,7 @@
   }
 
   /* ---------------------------------------------------------
-     3. Scroll suave con compensación del header fijo
+     3. Scroll suave
      --------------------------------------------------------- */
   $$('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
@@ -65,7 +65,7 @@
   });
 
   /* ---------------------------------------------------------
-     4. Carga de imágenes con degradado de respaldo
+     4. Carga de imágenes
      --------------------------------------------------------- */
   $$('img[data-img]').forEach(img => {
     const mark = () => img.classList.add('loaded');
@@ -126,9 +126,9 @@
 
   const ROOMS = [
     { nombre: 'Refugio', detalle: '42 m² · Vista reserva · Cama king', precio: 780,
-      img: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=400&q=80' },
+      img: 'img/refugio.jpg' },
     { nombre: 'Vuelo', detalle: '70 m² · Terraza & telescopio', precio: 1240,
-      img: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=400&q=80' },
+      img: 'img/vuelo.jpg' },
     { nombre: 'Crisálida', detalle: '120 m² · Aislada en el bosque', precio: 2400,
       img: 'img/crisalida.jpg' }
   ];
@@ -163,7 +163,7 @@
       return `
         <div class="bm-room">
           <div class="bm-room__thumb">
-            <img src="${r.img}" alt="${r.nombre}">
+            <img src="${r.img}" alt="${r.nombre}" loading="lazy">
           </div>
           <div class="bm-room__info">
             <h4>${r.nombre}</h4>
@@ -249,23 +249,14 @@
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       const idx = tab.dataset.room;
-
       tabs.forEach(t => {
         const on = t === tab;
         t.classList.toggle('active', on);
         t.setAttribute('aria-selected', String(on));
       });
-
       panels.forEach(p => {
         p.classList.toggle('active', p.dataset.panel === idx);
       });
-
-      const activePanel = $('.room-panel.active');
-      if (activePanel){
-        activePanel.querySelectorAll('img[data-img]').forEach(img => {
-          if (img.complete && img.naturalWidth > 0) img.classList.add('loaded');
-        });
-      }
     });
   });
 
@@ -315,7 +306,7 @@
   }
 
   /* ---------------------------------------------------------
-     10. Testimonios · slider automático
+     10. Testimonios
      --------------------------------------------------------- */
   const quotes = $$('.quote');
   const dots   = $$('#quoteDots button');
@@ -384,13 +375,13 @@
   }
 
   /* ---------------------------------------------------------
-     13. Año dinámico en el footer
+     13. Año dinámico
      --------------------------------------------------------- */
   const yearEl = document.querySelector('#year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    /* ---------------------------------------------------------
-     14. Selector de idioma (i18n · escritorio + móvil)
+  /* ---------------------------------------------------------
+     14. Selector de idioma
      --------------------------------------------------------- */
   const langBtns = $$('.lang-btn');
   const DICT = window.POLILLA_I18N || null;
@@ -425,11 +416,7 @@
 
     document.documentElement.lang = lang;
     try { localStorage.setItem('polilla-lang', lang); } catch(e){}
-
-    /* Actualiza AMBOS selectores (escritorio + móvil) */
-    langBtns.forEach(b => {
-      b.classList.toggle('active', b.dataset.lang === lang);
-    });
+    langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
   }
 
   langBtns.forEach(btn => {
@@ -449,7 +436,7 @@
   if (initialLang !== 'es') applyLang(initialLang);
 
   /* ---------------------------------------------------------
-     15. Enlace activo en el menú según la sección visible
+     15. Enlace activo en el menú
      --------------------------------------------------------- */
   const sections = [
     { id: 'hotel',        sel: '.nav a[href="#hotel"]' },
@@ -493,8 +480,9 @@
 
     sectionEls.forEach(el => sectionObserver.observe(el));
   }
-   /* ---------------------------------------------------------
-     16. Loader de entrada (a prueba de todo)
+
+  /* ---------------------------------------------------------
+     16. Loader de entrada (rápido y a prueba de todo)
      --------------------------------------------------------- */
   const loader = document.querySelector('#loader');
   if (loader){
@@ -504,29 +492,20 @@
       if (loaderHidden) return;
       loaderHidden = true;
       loader.classList.add('hidden');
-      setTimeout(() => { loader.style.display = 'none'; }, 900);
+      setTimeout(() => { loader.style.display = 'none'; }, 500);
     };
 
-    /* Regla principal: ocultar SIEMPRE a los 1.6s, sin importar qué cargó */
-    setTimeout(hideLoader, 1600);
+    /* Ocultar SIEMPRE a los 400ms */
+    setTimeout(hideLoader, 400);
 
-    /* Respaldo: si la página carga antes, ocultar enseguida */
-    if (document.readyState === 'complete'){
-      setTimeout(hideLoader, 800);
-    } else {
-      window.addEventListener('load', () => {
-        setTimeout(hideLoader, 800);
-      }, { once: true });
-    }
-
-    /* Segundo respaldo: al primer toque o scroll del usuario, quitar el loader */
+    /* Al primer toque, scroll o tecla → quitar inmediatamente */
     ['touchstart', 'click', 'scroll', 'keydown'].forEach(evt => {
       window.addEventListener(evt, hideLoader, { once: true, passive: true });
     });
   }
 
   /* ---------------------------------------------------------
-     17. Cursor personalizado (solo escritorio)
+     17. Cursor personalizado
      --------------------------------------------------------- */
   const cursor = document.querySelector('#cursor');
   const cursorDot  = cursor ? cursor.querySelector('.cursor__dot')  : null;
@@ -560,7 +539,7 @@
     }
     animateRing();
 
-    const hoverTargets = 'a, button, .tab, .card, .gallery button, .lang-btn, .llegar-card, .diario-card, .persona, input, select, textarea';
+    const hoverTargets = 'a, button, .tab, .gallery button, .lang-btn, .llegar-card, .diario-card, .persona, input, select, textarea';
     document.querySelectorAll(hoverTargets).forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
@@ -617,19 +596,18 @@
         contactoNote.textContent = 'Gracias. El concierge te escribirá hoy mismo.';
         contactoNote.style.color = 'var(--dorado)';
         contactoForm.reset();
-
         setTimeout(() => {
           btn.textContent = original;
           btn.disabled = false;
           contactoNote.textContent = 'Al enviar, aceptás que guardemos tus datos para responderte.';
           contactoNote.style.color = '';
         }, 5000);
-      }, 1000);
+      }, 800);
     });
   }
 
   /* ---------------------------------------------------------
-     19. Parallax suave en el hero
+     19. Parallax hero (solo escritorio)
      --------------------------------------------------------- */
   const heroSection = document.querySelector('#hero');
   const heroImg = heroSection ? heroSection.querySelector('.hero__bg img') : null;
@@ -656,8 +634,8 @@
     parallaxHero();
   }
 
-    /* ---------------------------------------------------------
-     20. Modo claro / oscuro (escritorio + móvil)
+  /* ---------------------------------------------------------
+     20. Modo claro / oscuro
      --------------------------------------------------------- */
   const themeToggles = [
     document.querySelector('#themeToggle'),
@@ -725,7 +703,6 @@
         if (exitShown) return;
         if (e.clientY > 0) return;
         if (e.relatedTarget || e.toElement) return;
-
         exitShown = true;
         setTimeout(() => {
           exitModal.classList.add('open');
@@ -763,33 +740,4 @@
     });
   }
 
-  /* ---------------------------------------------------------
-     22. Lazy loading + prefetch
-     --------------------------------------------------------- */
-  if ('IntersectionObserver' in window){
-    const lazyImages = document.querySelectorAll(
-      '.gallery img, .diario-card__media img, .persona__media img, .room__media img, .comedor__media img, .filo__media img'
-    );
-    lazyImages.forEach(img => {
-      if (img.loading !== 'lazy'){
-        img.loading = 'lazy';
-        img.decoding = 'async';
-      }
-    });
-
-    document.querySelectorAll('.nav a[href^="#"]').forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        const id = link.getAttribute('href').slice(1);
-        const section = document.getElementById(id);
-        if (section){
-          section.querySelectorAll('img[data-img]').forEach(img => {
-            if (!img.complete && img.loading !== 'eager'){
-              img.loading = 'eager';
-            }
-          });
-        }
-      }, { once: true });
-    });
-  }
-
-})(); 
+})();

@@ -52,11 +52,16 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="dns-prefetch" href="https://images.unsplash.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
 <link rel="preload" as="image"
       href="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=2200&q=85"
       fetchpriority="high">
+
+<link rel="prefetch" href="img/filosofia.jpg" as="image">
+<link rel="prefetch" href="img/galeria/01.jpg" as="image">
 
 <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -67,7 +72,7 @@
 
 <div class="loader" id="loader" aria-hidden="true">
   <div class="loader__inner">
-    <img src="img/logo.png" alt="" class="loader__logo">
+    <img src="img/logo.png" alt="" class="loader__logo" width="72" height="72" decoding="async">
     <span class="loader__name">POLILLA</span>
   </div>
 </div>
@@ -79,14 +84,12 @@
 
 <div class="progress" id="progress"></div>
 
-<!-- ============================================================
-     HEADER
-     ============================================================ -->
+<!-- HEADER -->
 <header class="header" id="header">
   <div class="container header__inner">
 
     <a href="#top" class="logo" aria-label="Polilla Suites — Inicio">
-      <img src="img/logo.png" alt="Polilla Suites" class="logo__img">
+      <img src="img/logo.png" alt="Polilla Suites" class="logo__img" width="56" height="56" decoding="async">
       <span class="logo__text">
         <span class="logo__name">POLILLA</span>
         <span class="logo__sub">Suites · Patagonia Austral</span>
@@ -104,7 +107,6 @@
 
     <div class="header__actions">
 
-      <!-- Modo claro/oscuro · escritorio -->
       <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema" title="Modo luna llena">
         <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="4"/>
@@ -115,7 +117,6 @@
         </svg>
       </button>
 
-      <!-- Selector idioma · escritorio -->
       <div class="lang-switcher" role="group" aria-label="Idioma">
         <button class="lang-btn active" data-lang="es" aria-label="Español" title="Español">
           <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
@@ -152,9 +153,7 @@
   </div>
 </header>
 
-<!-- ============================================================
-     MENÚ MÓVIL
-     ============================================================ -->
+<!-- MENÚ MÓVIL -->
 <nav class="mobile-nav" id="mobileNav" aria-label="Navegación móvil">
   <a href="#hotel">El Hotel</a>
   <a href="#habitaciones">Habitaciones</a>
@@ -164,9 +163,7 @@
   <a href="#galeria">Galería</a>
   <a href="#reservar">Reservar</a>
 
-  <!-- Controles móviles: tema + idiomas -->
   <div class="mobile-controls">
-
     <div class="mobile-controls__row">
       <span class="mobile-controls__label">Tema</span>
       <button class="theme-toggle theme-toggle--mobile" id="themeToggleMobile" aria-label="Cambiar tema">
@@ -208,7 +205,6 @@
         </button>
       </div>
     </div>
-
   </div>
 
   <div class="mobile-nav__foot">
@@ -223,15 +219,12 @@
   <section class="hero" id="hero">
     <div class="hero__bg">
       <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=2200&q=85"
-           alt="" aria-hidden="true" data-img>
+           alt="" aria-hidden="true" fetchpriority="high" decoding="async" data-img>
     </div>
 
     <div class="container">
       <div class="hero__content">
-        <span class="hero__tag">
-          <i></i>
-          Reserva Natural · Patagonia Austral
-        </span>
+        <span class="hero__tag"><i></i>Reserva Natural · Patagonia Austral</span>
 
         <h1>
           <span class="hero__line"><span>En medio</span></span>
@@ -257,10 +250,7 @@
       <div><strong>30</strong><span>Habitaciones</span></div>
     </div>
 
-    <div class="hero__scroll" aria-hidden="true">
-      <span>Desliza</span>
-      <i></i>
-    </div>
+    <div class="hero__scroll" aria-hidden="true"><span>Desliza</span><i></i></div>
   </section>
 
   <!-- BARRA DE RESERVAS -->
@@ -315,12 +305,10 @@
     <div class="container filo__grid">
       <div class="filo__media reveal">
         <div class="media">
-          <img src="img/filosofia.jpg" alt="Estancia restaurada de Polilla Suites" data-img>
+          <img src="img/filosofia.jpg" alt="Estancia restaurada de Polilla Suites"
+               width="1200" height="1500" loading="lazy" decoding="async" data-img>
         </div>
-        <div class="filo__seal">
-          <strong>5★</strong>
-          <span>Cinco estrellas<br>de silencio</span>
-        </div>
+        <div class="filo__seal"><strong>5★</strong><span>Cinco estrellas<br>de silencio</span></div>
       </div>
 
       <div class="filo__body">
@@ -360,15 +348,9 @@
       </div>
 
       <div class="tabs reveal" role="tablist" aria-label="Tipos de habitación">
-        <button class="tab active" role="tab" id="tab-refugio" aria-selected="true" aria-controls="panel-refugio" data-room="0">
-          Refugio <small>· 20</small>
-        </button>
-        <button class="tab" role="tab" id="tab-vuelo" aria-selected="false" aria-controls="panel-vuelo" data-room="1">
-          Vuelo <small>· 8</small>
-        </button>
-        <button class="tab" role="tab" id="tab-crisalida" aria-selected="false" aria-controls="panel-crisalida" data-room="2">
-          Crisálida <small>· 2</small>
-        </button>
+        <button class="tab active" role="tab" id="tab-refugio" aria-selected="true" aria-controls="panel-refugio" data-room="0">Refugio <small>· 20</small></button>
+        <button class="tab" role="tab" id="tab-vuelo" aria-selected="false" aria-controls="panel-vuelo" data-room="1">Vuelo <small>· 8</small></button>
+        <button class="tab" role="tab" id="tab-crisalida" aria-selected="false" aria-controls="panel-crisalida" data-room="2">Crisálida <small>· 2</small></button>
       </div>
 
       <div class="room-panel active" data-panel="0" role="tabpanel" id="panel-refugio" aria-labelledby="tab-refugio">
@@ -376,12 +358,9 @@
           <div class="room__media reveal">
             <div class="media">
               <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1400&q=85"
-                   alt="Refugio" data-img>
+                   alt="Refugio" width="1400" height="963" loading="lazy" decoding="async" data-img>
             </div>
-            <div class="room__price">
-              <small>Desde / noche</small>
-              <strong>USD 780 <span>+ impuestos</span></strong>
-            </div>
+            <div class="room__price"><small>Desde / noche</small><strong>USD 780 <span>+ impuestos</span></strong></div>
           </div>
           <div class="room__body">
             <h3>Refugio</h3>
@@ -404,12 +383,9 @@
           <div class="room__media">
             <div class="media">
               <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1400&q=85"
-                   alt="Vuelo" data-img>
+                   alt="Vuelo" width="1400" height="963" loading="lazy" decoding="async" data-img>
             </div>
-            <div class="room__price">
-              <small>Desde / noche</small>
-              <strong>USD 1.240 <span>+ impuestos</span></strong>
-            </div>
+            <div class="room__price"><small>Desde / noche</small><strong>USD 1.240 <span>+ impuestos</span></strong></div>
           </div>
           <div class="room__body">
             <h3>Vuelo · Terraza &amp; Telescopio</h3>
@@ -431,12 +407,10 @@
         <div class="room">
           <div class="room__media">
             <div class="media">
-              <img src="img/crisalida.jpg" alt="Crisálida" data-img>
+              <img src="img/crisalida.jpg" alt="Crisálida"
+                   width="1400" height="963" loading="lazy" decoding="async" data-img>
             </div>
-            <div class="room__price">
-              <small>Desde / noche</small>
-              <strong>USD 2.400 <span>+ impuestos</span></strong>
-            </div>
+            <div class="room__price"><small>Desde / noche</small><strong>USD 2.400 <span>+ impuestos</span></strong></div>
           </div>
           <div class="room__body">
             <h3>Crisálida · Aislada en el Bosque</h3>
@@ -461,7 +435,8 @@
     <div class="container comedor__layout">
       <div class="comedor__media reveal">
         <div class="media">
-          <img src="img/comedor.jpg" alt="Mesa del comedor" data-img>
+          <img src="img/comedor.jpg" alt="Mesa del comedor"
+               width="1200" height="1500" loading="lazy" decoding="async" data-img>
         </div>
       </div>
       <div class="comedor__body">
@@ -537,19 +512,14 @@
         </article>
         <article class="llegar-card reveal" style="--d:.16s">
           <span class="llegar-card__num">03</span>
-          <h3>4x4 desde Punta Arenas</h3>
+          <h4>4x4 desde Punta Arenas</h4>
           <p>Ruta escénica por la estepa patagónica. Los últimos 8 kilómetros a pie o en lancha.</p>
           <span class="llegar-card__time">4 h 30 min</span>
         </article>
       </div>
       <div class="llegar__foot reveal" style="--d:.22s">
-        <div class="llegar__coord">
-          <small>Coordenadas</small>
-          <strong>51° 22' S · 73° 04' W</strong>
-        </div>
-        <div class="llegar__note">
-          El concierge organiza traslados privados desde cualquier punto de Chile o Argentina.
-        </div>
+        <div class="llegar__coord"><small>Coordenadas</small><strong>51° 22' S · 73° 04' W</strong></div>
+        <div class="llegar__note">El concierge organiza traslados privados desde cualquier punto de Chile o Argentina.</div>
         <a href="https://wa.me/393520061020?text=Hola%2C%20necesito%20informaci%C3%B3n%20para%20llegar%20a%20Polilla%20Suites"
            class="btn btn--ghost" target="_blank" rel="noopener">Consultar traslado</a>
       </div>
@@ -632,14 +602,30 @@
         <p class="lede mx-auto reveal" style="--d:.12s">Sin retoques, sin poses. Así se ve la reserva cuando nadie mira.</p>
       </div>
       <div class="gallery reveal" id="gallery">
-        <button class="g-a" data-src="img/galeria/01.jpg" aria-label="Ampliar imagen 1"><div class="media"><img src="img/galeria/01.jpg" alt="" data-img></div></button>
-        <button class="g-b" data-src="img/galeria/02.jpg" aria-label="Ampliar imagen 2"><div class="media"><img src="img/galeria/02.jpg" alt="" data-img></div></button>
-        <button class="g-c" data-src="img/galeria/03.jpg" aria-label="Ampliar imagen 3"><div class="media"><img src="img/galeria/03.jpg" alt="" data-img></div></button>
-        <button class="g-d" data-src="img/galeria/04.jpg" aria-label="Ampliar imagen 4"><div class="media"><img src="img/galeria/04.jpg" alt="" data-img></div></button>
-        <button class="g-e" data-src="img/galeria/05.jpg" aria-label="Ampliar imagen 5"><div class="media"><img src="img/galeria/05.jpg" alt="" data-img></div></button>
-        <button class="g-b" data-src="img/galeria/06.jpg" aria-label="Ampliar imagen 6"><div class="media"><img src="img/galeria/06.jpg" alt="" data-img></div></button>
-        <button class="g-c" data-src="img/galeria/07.jpg" aria-label="Ampliar imagen 7"><div class="media"><img src="img/galeria/07.jpg" alt="" data-img></div></button>
-        <button class="g-b" data-src="img/galeria/08.jpg" aria-label="Ampliar imagen 8"><div class="media"><img src="img/galeria/08.jpg" alt="" data-img></div></button>
+        <button class="g-a" data-src="img/galeria/01.jpg" aria-label="Ampliar imagen 1">
+          <div class="media"><img src="img/galeria/01.jpg" alt="" width="1200" height="1200" loading="lazy" decoding="async" data-img></div>
+        </button>
+        <button class="g-b" data-src="img/galeria/02.jpg" aria-label="Ampliar imagen 2">
+          <div class="media"><img src="img/galeria/02.jpg" alt="" width="900" height="900" loading="lazy" decoding="async" data-img></div>
+        </button>
+        <button class="g-c" data-src="img/galeria/03.jpg" aria-label="Ampliar imagen 3">
+          <div class="media"><img src="img/galeria/03.jpg" alt="" width="900" height="900" loading="lazy" decoding="async" data-img></div>
+        </button>
+        <button class="g-d" data-src="img/galeria/04.jpg" aria-label="Ampliar imagen 4">
+          <div class="media"><img src="img/galeria/04.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async" data-img></div>
+        </button>
+        <button class="g-e" data-src="img/galeria/05.jpg" aria-label="Ampliar imagen 5">
+          <div class="media"><img src="img/galeria/05.jpg" alt="" width="900" height="900" loading="lazy" decoding="async" data-img></div>
+        </button>
+        <button class="g-b" data-src="img/galeria/06.jpg" aria-label="Ampliar imagen 6">
+          <div class="media"><img src="img/galeria/06.jpg" alt="" width="900" height="900" loading="lazy" decoding="async" data-img></div>
+        </button>
+        <button class="g-c" data-src="img/galeria/07.jpg" aria-label="Ampliar imagen 7">
+          <div class="media"><img src="img/galeria/07.jpg" alt="" width="900" height="900" loading="lazy" decoding="async" data-img></div>
+        </button>
+        <button class="g-b" data-src="img/galeria/08.jpg" aria-label="Ampliar imagen 8">
+          <div class="media"><img src="img/galeria/08.jpg" alt="" width="900" height="900" loading="lazy" decoding="async" data-img></div>
+        </button>
       </div>
     </div>
   </section>
@@ -703,7 +689,9 @@
       </div>
       <div class="diario__grid">
         <a href="#" class="diario-card reveal">
-          <div class="diario-card__media media"><img src="img/cielo-1.jpg" alt="" data-img></div>
+          <div class="diario-card__media media">
+            <img src="img/cielo-1.jpg" alt="" width="900" height="563" loading="lazy" decoding="async" data-img>
+          </div>
           <div class="diario-card__body">
             <span class="diario-card__meta">Cielo · 12 min de lectura</span>
             <h3>Cómo leer el cielo patagónico</h3>
@@ -712,7 +700,9 @@
           </div>
         </a>
         <a href="#" class="diario-card reveal" style="--d:.08s">
-          <div class="diario-card__media media"><img src="img/mate.jpg" alt="" data-img></div>
+          <div class="diario-card__media media">
+            <img src="img/mate.jpg" alt="" width="900" height="563" loading="lazy" decoding="async" data-img>
+          </div>
           <div class="diario-card__body">
             <span class="diario-card__meta">Rituales · 8 min de lectura</span>
             <h3>El ritual del mate al amanecer</h3>
@@ -721,7 +711,9 @@
           </div>
         </a>
         <a href="#" class="diario-card reveal" style="--d:.16s">
-          <div class="diario-card__media media"><img src="img/cielo.jpg" alt="" data-img></div>
+          <div class="diario-card__media media">
+            <img src="img/cielo.jpg" alt="" width="900" height="563" loading="lazy" decoding="async" data-img>
+          </div>
           <div class="diario-card__body">
             <span class="diario-card__meta">Filosofía · 6 min de lectura</span>
             <h3>Por qué apagamos todas las luces a las 23:00</h3>
@@ -742,23 +734,33 @@
       </div>
       <div class="equipo__grid">
         <article class="persona reveal">
-          <div class="persona__media media"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="" data-img></div>
+          <div class="persona__media media">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="" width="600" height="800" loading="lazy" decoding="async" data-img>
+          </div>
           <div class="persona__body"><span class="persona__cargo">Fundadora</span><h3>Isabela Errázuriz</h3><p>"Compré esta estancia en ruinas en 2013. Tardé siete años en restaurarla."</p></div>
         </article>
         <article class="persona reveal" style="--d:.08s">
-          <div class="persona__media media"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="" data-img></div>
+          <div class="persona__media media">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="" width="600" height="800" loading="lazy" decoding="async" data-img>
+          </div>
           <div class="persona__body"><span class="persona__cargo">Chef</span><h3>Tomás Barría</h3><p>"Cocino con lo que hay. Si un día no encuentro cordero, no hay cordero."</p></div>
         </article>
         <article class="persona reveal" style="--d:.16s">
-          <div class="persona__media media"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" alt="" data-img></div>
+          <div class="persona__media media">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" alt="" width="600" height="800" loading="lazy" decoding="async" data-img>
+          </div>
           <div class="persona__body"><span class="persona__cargo">Guía</span><h3>Camila Nahuelpán</h3><p>"Conozco cada sendero de estas 40.000 hectáreas."</p></div>
         </article>
         <article class="persona reveal" style="--d:.24s">
-          <div class="persona__media media"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="" data-img></div>
+          <div class="persona__media media">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="" width="600" height="800" loading="lazy" decoding="async" data-img>
+          </div>
           <div class="persona__body"><span class="persona__cargo">Concierge</span><h3>Martín Aguirre</h3><p>"Organizo desde un traslado en helicóptero hasta una cena de aniversario."</p></div>
         </article>
         <article class="persona reveal" style="--d:.32s">
-          <div class="persona__media media"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80" alt="" data-img></div>
+          <div class="persona__media media">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80" alt="" width="600" height="800" loading="lazy" decoding="async" data-img>
+          </div>
           <div class="persona__body"><span class="persona__cargo">Spa & bienestar</span><h3>Renata Silva</h3><p>"Diseñé el ritual de aceite de lenga después de tres inviernos aquí."</p></div>
         </article>
       </div>
@@ -808,7 +810,8 @@
   <!-- CTA FINAL -->
   <section class="cta-final">
     <div class="cta-final__bg">
-      <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=2000&q=85" alt="" aria-hidden="true" data-img>
+      <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=2000&q=85"
+           alt="" aria-hidden="true" width="2000" height="1333" loading="lazy" decoding="async" data-img>
     </div>
     <div class="container">
       <span class="eyebrow center reveal">Su próxima estancia</span>
@@ -848,7 +851,7 @@
     <div class="footer__grid">
       <div class="footer__brand">
         <a href="#top" class="logo" aria-label="Polilla Suites — Inicio">
-          <img src="img/logo.png" alt="Polilla Suites" class="logo__img">
+          <img src="img/logo.png" alt="Polilla Suites" class="logo__img" width="56" height="56" decoding="async">
           <span class="logo__text">
             <span class="logo__name">POLILLA</span>
             <span class="logo__sub">Suites · Patagonia Austral</span>
@@ -898,8 +901,13 @@
       </div>
     </div>
 
-    <div class="footer__bottom">
-      <span>© <span id="year">2025</span> Polilla Suites by <a href="https://www.instagram.com/eggloading.web/?hl=es" target="_blank" rel="noopener" class="footer__link">Egg Loading</a>. Sitio ficticio de demostración.</span>
+     <div class="footer__bottom">
+      <span>
+        © <span id="year">2025</span>
+        <span class="footer__copy-brand">Polilla Suites by</span>
+        <a href="https://www.instagram.com/eggloading.web/?hl=es" target="_blank" rel="noopener" class="footer__link">Egg Loading</a>.
+        <span class="footer__copy-note">Sitio ficticio de demostración.</span>
+      </span>
       <div class="footer__legal">
         <a href="#">Privacidad</a>
         <a href="#">Cookies</a>
@@ -907,6 +915,19 @@
         <a href="#">Accesibilidad</a>
       </div>
     </div>
+
+    <!-- Crédito · Egg Loading -->
+    <a href="https://eggloading--web.pages.dev/"
+       class="footer__credit"
+       target="_blank"
+       rel="noopener">
+      <span class="footer__credit-label">Creado por</span>
+      <span class="footer__credit-brand">EGG LOADING</span>
+      <svg class="footer__credit-arrow" viewBox="0 0 16 8" fill="none" aria-hidden="true">
+        <path d="M0 4h14M10 1l3 3-3 3" stroke="currentColor" stroke-width="1"/>
+      </svg>
+    </a>
+
   </div>
 </footer>
 
